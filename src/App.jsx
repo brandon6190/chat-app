@@ -1,6 +1,8 @@
 import React from 'react';
 import './style.css'; 
 
+import Dashboard from './Dashboard.jsx';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -9,7 +11,7 @@ class App extends React.Component {
   render() {
     return (
       <div className='App'>
-        Hello World
+        <Dashboard />
       </div>
     )
   }
