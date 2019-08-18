@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Dashboard from './Dashboard.jsx';
 
 class App extends React.Component {
@@ -8,8 +7,11 @@ class App extends React.Component {
   }
 
   render() {
+    const AppStyle = {
+      textAlign: 'center'
+    }
     return (
-      <div className='App'>
+      <div style={AppStyle}>
         <Dashboard />
       </div>
     )
