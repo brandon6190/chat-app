@@ -6,6 +6,8 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Chip from '@material-ui/core/Chip';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField'
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -47,7 +49,9 @@ function Dashboard() {
 					Topic placeholder
 				</Typography>
 
+        {/** Topics & Chat window Container */}
 				<div className={classes.flex}>
+          {/** TopicsWindow Component */}
 					<div className={classes.topicsWindow}>
             <List>
               {['JavaScript', 'ReactJS', 'Node/Express'].map( (topic, i) => {
@@ -60,21 +64,27 @@ function Dashboard() {
             </List>
 					</div>
 
+          {/** ChatWindow Component */}
 					<div className={classes.chatWindow}>
           {[{from: 'user', msg: 'Hello World'}].map((chat, i) => {
                 return (
                   <div className={classes.flex} key={i}>
                     <Chip label={chat.from} className={classes.chip}/>
-                    <Typography varient='p' component='p'>{chat.msg}</Typography>
+                    <Typography variant='p' component='p'>{chat.msg}</Typography>
                   </div>
                 );
               })}
           </div>
 				</div>
-
+        
+        {/** InputMessage Component */}
 				<div className={classes.flex}>
-
+            <TextField label='My Message...' className={classes.chatBox} />              
+            <Button variant='contained' color='primary' className={classes.button}>
+              Send
+            </Button>
         </div>
+
 			</Paper>
 		</div>
 	);
