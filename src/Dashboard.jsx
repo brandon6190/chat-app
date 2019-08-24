@@ -7,7 +7,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField'
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -37,11 +37,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Dashboard() {
-	const classes = useStyles();
+  const classes = useStyles();
+  
+  const [textValue, changeTextValue] = React.useState('');
 
 	return (
 		<div>
 			<Paper className={classes.root}>
+
 				<Typography variant="h4" component="h4">
 					Chat App
 				</Typography>
@@ -49,8 +52,9 @@ function Dashboard() {
 					Topic placeholder
 				</Typography>
 
-        {/** Topics & Chat window Container */}
+        {/** Topics & Chat window Container START */}
 				<div className={classes.flex}>
+
           {/** TopicsWindow Component */}
 					<div className={classes.topicsWindow}>
             <List>
@@ -75,11 +79,18 @@ function Dashboard() {
                 );
               })}
           </div>
+
 				</div>
-        
+        {/** Topics & Chat window Container END */}
+
         {/** InputMessage Component */}
 				<div className={classes.flex}>
-            <TextField label='My Message...' className={classes.chatBox} />              
+            <TextField 
+              label='My Message...'
+              className={classes.chatBox} 
+              value={textValue}
+              onChange={e => changeTextValue(e.target.value)}
+            />              
             <Button variant='contained' color='primary' className={classes.button}>
               Send
             </Button>
