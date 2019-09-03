@@ -8,6 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import {CTX} from './Store';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -38,6 +39,10 @@ const useStyles = makeStyles(theme => ({
 
 function Dashboard() {
   const classes = useStyles();
+
+  // CTX store
+  const [allChats] = React.useContext(CTX);
+  console.log('allChats = ', {allChats});
   
   const [textValue, changeTextValue] = React.useState('');
 
