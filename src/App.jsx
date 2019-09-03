@@ -1,5 +1,6 @@
 import React from 'react';
 import Dashboard from './Dashboard.jsx';
+import Store from './Store';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +13,9 @@ class App extends React.Component {
     }
     return (
       <div style={AppStyle}>
-        <Dashboard />
+        <Store>
+          <Dashboard />
+        </Store>
       </div>
     )
   }
