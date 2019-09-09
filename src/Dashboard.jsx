@@ -42,8 +42,11 @@ function Dashboard() {
 
   // CTX store
   const [allChats] = React.useContext(CTX);
-  console.log('allChats = ', {allChats});
-  
+  const topics = Object.keys(allChats);
+
+
+  // Local state
+  const [activeTopic, changeActiveTopic] = React.useState(topics[0]);
   const [textValue, changeTextValue] = React.useState('');
 
 	return (
@@ -54,7 +57,7 @@ function Dashboard() {
 					Chat App
 				</Typography>
 				<Typography variant="h5" component="h5">
-					Topic placeholder
+					{activeTopic}
 				</Typography>
 
         {/** Topics & Chat window Container START */}
@@ -63,9 +66,9 @@ function Dashboard() {
           {/** TopicsWindow Component */}
 					<div className={classes.topicsWindow}>
             <List>
-              {['JavaScript', 'ReactJS', 'Node/Express'].map( (topic, i) => {
+              {topics.map( (topic, i) => {
                 return (
-                  <ListItem key={i} button>
+                  <ListItem onClick={e => changeActiveTopic(e.target.innerText)} key={i} button>
                     <ListItemText primary={topic} />
                   </ListItem>
                 );
@@ -75,11 +78,11 @@ function Dashboard() {
 
           {/** ChatWindow Component */}
 					<div className={classes.chatWindow}>
-          {[{from: 'user', msg: 'Hello World'}].map((chat, i) => {
+          {allChats[activeTopic].map((chat, i) => {
                 return (
                   <div className={classes.flex} key={i}>
                     <Chip label={chat.from} className={classes.chip}/>
-                    <Typography variant='p' component='p'>{chat.msg}</Typography>
+                    <Typography variant='body1' component='p' gutterBottom>{chat.msg}</Typography>
                   </div>
                 );
               })}
