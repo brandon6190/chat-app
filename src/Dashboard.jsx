@@ -41,7 +41,7 @@ function Dashboard() {
   const classes = useStyles();
 
   // CTX store
-  const [allChats] = React.useContext(CTX);
+  const {allChats} = React.useContext(CTX);
   const topics = Object.keys(allChats);
 
 
