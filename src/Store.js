@@ -48,10 +48,12 @@ function Store(props) {
     socket = io(':3001');
   }
 
+  const user = 'Brandon' + Math.floor(Math.random(100) * 100);
+
   const [allChats] = React.useReducer(reducer, initState);
 
   return (
-    <CTX.Provider value={{allChats, sendChatAction}}>
+    <CTX.Provider value={{allChats, sendChatAction, user}}>
       {props.children}
     </CTX.Provider>
   )
